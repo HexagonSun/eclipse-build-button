@@ -38,7 +38,7 @@
                id="net.hexagon.sun.eclipse.bb.toolbars.buildButtonBar">
             <command
                   commandId="net.hexagon.sun.eclipse.bb.commands.fullBuild"
-                  icon="icons/sample.gif"
+                  icon="icons/brick16.png"
                   tooltip="Build All"
                   id="net.hexagon.sun.eclipse.bb.toolbars.fullBuild">
             </command>
