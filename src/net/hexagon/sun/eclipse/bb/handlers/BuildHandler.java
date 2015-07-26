@@ -24,6 +24,7 @@ public class BuildHandler extends AbstractHandler {
 	/**
 	 * Entry point called by Eclipse's framework.
 	 */
+	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		List<IJavaProject> projects = getSelectedProjects();
 		buildProjects(projects);
