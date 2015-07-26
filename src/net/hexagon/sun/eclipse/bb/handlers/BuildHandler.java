@@ -12,6 +12,7 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
@@ -52,8 +53,11 @@ public class BuildHandler extends AbstractHandler {
 		if (window == null) {
 			return Collections.emptyList();
 		}
-		IStructuredSelection selection = (IStructuredSelection) window.getSelectionService().getSelection();
-		List<IJavaProject> projects = getProjects(selection);
+		ISelection selection = window.getSelectionService().getSelection();
+		if (!(selection instanceof IStructuredSelection)) {
+			return Collections.emptyList();
+		}
+		List<IJavaProject> projects = getProjects((IStructuredSelection) selection);
 		return projects;
 	}
 
