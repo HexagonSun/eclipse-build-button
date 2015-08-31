@@ -12,7 +12,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
-public class SingleBuild extends BuildHandler {
+public class SelectionBuild extends BuildHandler {
 	
 	@Override
 	protected List<IProject> getSelectedProjects() {
