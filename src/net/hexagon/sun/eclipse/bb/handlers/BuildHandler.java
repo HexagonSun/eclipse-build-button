@@ -1,8 +1,5 @@
 package net.hexagon.sun.eclipse.bb.handlers;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -12,25 +9,21 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * Handler executed when the toolbar's button is clicked. Gathers all selected projects & clean/builds them.
  */
-public class BuildHandler extends AbstractHandler {
-
-	/**
-	 * Entry point called by Eclipse's framework.
-	 */
+public abstract class BuildHandler extends AbstractHandler {
+	
+	/** Entry point called by Eclipse's framework. */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		List<IJavaProject> projects = getSelectedProjects();
 		buildProjects(projects);
 		return null;
 	}
+	
+	protected abstract List<IJavaProject> getSelectedProjects();
 
 	private void buildProjects(List<IJavaProject> allProjects) {
 		for (IJavaProject project : allProjects) {
@@ -47,30 +40,12 @@ public class BuildHandler extends AbstractHandler {
 			e.printStackTrace();
 		}
 	}
-	
-	private List<IJavaProject> getSelectedProjects() {
-		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-		if (window == null) {
-			return Collections.emptyList();
-		}
-		ISelection selection = window.getSelectionService().getSelection();
-		if (!(selection instanceof IStructuredSelection)) {
-			return Collections.emptyList();
-		}
-		List<IJavaProject> projects = getProjects((IStructuredSelection) selection);
-		return projects;
-	}
 
-	private List<IJavaProject> getProjects(IStructuredSelection selection) {
-		List<IJavaProject> projects= new LinkedList<IJavaProject>();
-		for (@SuppressWarnings("rawtypes") Iterator it = selection.iterator(); it.hasNext();) {
-			Object element = it.next();
-			IJavaProject project= processElement(element);
-			if (project != null) {
-				projects.add(project);
-			}
+	protected void addJavaProjects(List<IJavaProject> projects, Object element) {
+		IJavaProject project= processElement(element);
+		if (project != null) {
+			projects.add(project);
 		}
-		return Collections.unmodifiableList(projects);
 	}
 
 	private IJavaProject processElement(Object element) {
@@ -80,4 +55,5 @@ public class BuildHandler extends AbstractHandler {
 		}
 		return null;
 	}
+
 }

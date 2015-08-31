@@ -9,25 +9,40 @@
             id="net.hexagon.sun.eclipse.bb.commands.category">
       </category>
       <command
-            name="Build Buttons"
+            name="Build Command Single"
             categoryId="net.hexagon.sun.eclipse.bb.commands.category"
-            id="net.hexagon.sun.eclipse.bb.commands.fullBuild">
+            id="net.hexagon.sun.eclipse.bb.commands.singleBuild">
+      </command>
+      <command
+            categoryId="net.hexagon.sun.eclipse.bb.commands.category"
+            id="net.hexagon.sun.eclipse.bb.commands.fullBuild"
+            name="Build Command Full">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            commandId="net.hexagon.sun.eclipse.bb.commands.fullBuild"
-            class="net.hexagon.sun.eclipse.bb.handlers.BuildHandler">
+            class="net.hexagon.sun.eclipse.bb.handlers.SingleBuild"
+            commandId="net.hexagon.sun.eclipse.bb.commands.singleBuild">
+      </handler>
+      <handler
+            class="net.hexagon.sun.eclipse.bb.handlers.FullBuild"
+            commandId="net.hexagon.sun.eclipse.bb.commands.fullBuild">
       </handler>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="net.hexagon.sun.eclipse.bb.commands.fullBuild"
+            commandId="net.hexagon.sun.eclipse.bb.commands.singleBuild"
             contextId="org.eclipse.ui.contexts.window"
             sequence="M1+6"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            commandId="net.hexagon.sun.eclipse.bb.commands.fullBuild"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+7">
       </key>
    </extension>
    <extension
