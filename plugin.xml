@@ -37,8 +37,14 @@
          <toolbar
                id="net.hexagon.sun.eclipse.bb.toolbars.buildButtonBar">
             <command
+                  commandId="net.hexagon.sun.eclipse.bb.commands.singleBuild"
+                  icon="icons/brick-single16.png"
+                  id="net.hexagon.sun.eclipse.bb.toolbars.singleBuild"
+                  tooltip="Build single project">
+            </command>
+            <command
                   commandId="net.hexagon.sun.eclipse.bb.commands.fullBuild"
-                  icon="icons/brick16.png"
+                  icon="icons/brick-wall16.png"
                   tooltip="Build All"
                   id="net.hexagon.sun.eclipse.bb.toolbars.fullBuild">
             </command>
