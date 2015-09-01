@@ -5,18 +5,18 @@
    <extension
          point="org.eclipse.ui.commands">
       <category
-            name="Build Buttons"
+            name="%category.name"
             id="net.hexagon.sun.eclipse.bb.commands.category">
       </category>
       <command
-            name="Build selected command"
+            name="%command.name"
             categoryId="net.hexagon.sun.eclipse.bb.commands.category"
             id="net.hexagon.sun.eclipse.bb.commands.selectionBuild">
       </command>
       <command
             categoryId="net.hexagon.sun.eclipse.bb.commands.category"
             id="net.hexagon.sun.eclipse.bb.commands.fullBuild"
-            name="Build all command">
+            name="%command.name.0">
       </command>
    </extension>
    <extension
@@ -55,12 +55,12 @@
                   commandId="net.hexagon.sun.eclipse.bb.commands.selectionBuild"
                   icon="icons/brick-single16.png"
                   id="net.hexagon.sun.eclipse.bb.toolbars.selectionBuild"
-                  tooltip="Build selected projects">
+                  tooltip="%command.tooltip">
             </command>
             <command
                   commandId="net.hexagon.sun.eclipse.bb.commands.fullBuild"
                   icon="icons/brick-wall16.png"
-                  tooltip="Build all projects"
+                  tooltip="%command.tooltip.0"
                   id="net.hexagon.sun.eclipse.bb.toolbars.fullBuild">
             </command>
          </toolbar>

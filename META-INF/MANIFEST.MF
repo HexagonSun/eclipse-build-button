@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Build Button
+Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: net.hexagon.sun.eclipse.BuildButton;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: net.hexagon.sun.eclipse.bb.Activator
@@ -11,3 +11,5 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources
+Export-Package: net.hexagon.sun.eclipse.bb,
+ net.hexagon.sun.eclipse.bb.handlers
