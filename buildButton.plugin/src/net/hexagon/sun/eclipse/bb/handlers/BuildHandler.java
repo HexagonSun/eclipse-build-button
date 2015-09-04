@@ -1,6 +1,6 @@
 package net.hexagon.sun.eclipse.bb.handlers;
 
-import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -18,14 +18,14 @@ public abstract class BuildHandler extends AbstractHandler {
 	/** Entry point called by Eclipse's framework. */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		List<IProject> projects = getSelectedProjects();
+		Set<IProject> projects = getSelectedProjects();
 		buildProjects(projects);
 		return null;
 	}
 	
-	protected abstract List<IProject> getSelectedProjects();
+	protected abstract Set<IProject> getSelectedProjects();
 
-	private void buildProjects(List<IProject> allProjects) {
+	private void buildProjects(Set<IProject> allProjects) {
 		for (IProject p : allProjects) {
 			buildProject(p);
 		}
@@ -41,7 +41,7 @@ public abstract class BuildHandler extends AbstractHandler {
 		}
 	}
 
-	protected void addProject(List<IProject> allProjects, IProject project) {
+	protected void addProject(Set<IProject> allProjects, IProject project) {
 		if (project != null) {
 			allProjects.add(project);
 		}
